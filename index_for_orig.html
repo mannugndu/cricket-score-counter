@@ -1,0 +1,1216 @@
+<html>
+<head>
+<meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
+
+<style>
+
+input[type=text]:disabled {
+color:#f2f2f2;
+    background: #000033;
+	}
+input[type=number]:disabled {
+color:#f2f2f2;
+    background: #000033;
+	}
+
+.container-b1-b2
+{
+background:#000033;
+text-align:center;
+padding:8px;
+border-radius:20px;
+box-shadow:2px 2px grey;
+}
+.box1
+{
+
+color:white;
+ border-radius:5px;
+box-shadow:0px 0px 2px 2px grey;
+font-size:2em;
+background:#2F4F4F;
+margin-right:12px;
+display: inline-block;
+}
+.box2 
+{
+border-radius:5px;
+box-shadow:0px 0px 2px 2px grey;
+color:white;
+font-size:2em;
+margin-left:12px;
+background:#2F4F4F;
+ display: inline-block;	
+}
+.box-heading
+{
+background:#1d3030;
+width:130px;
+border-radius:0px 0px 8px 8px;
+border:2px solid grey;
+}
+
+#total_score
+{font-weight:bold;
+font-size:50px;
+padding:0px;
+}
+
+
+ul li
+{
+display:inline;}
+.over_block
+{
+background:pink;
+}
+
+.extra_box
+{
+border:2px solid grey;
+top:220px;
+position:absolute;right:0px;
+padding:5px;
+
+padding-left:6px;
+background:#3d0099;
+border-radius:30px 0px 0px 30px;
+}
+.extra_box input
+{
+color:#140033;
+font-weight:bold;
+background:#f0e6ff;
+font-size:1.5em;
+text-align:center;
+border-radius:30px 0px 0px 30px;
+height:35px;
+width:80px;
+
+}
+
+.keyboard
+{
+background:#00001a;
+border:2px solid grey;width:100%;text-align:center;
+border-radius: 10px;
+}
+.keyboard tr td
+{
+background:#2F4F4F;
+border:1px solid grey;
+border-radius:20px;
+padding:4px;
+}
+.keyboard tr td div
+{
+font-weight:bold;
+color:white;
+text-shadow: 1px 1px grey;
+border-radius:20px;
+font-size:2em;
+background:#132020;
+}
+.keyboard tr td div:hover
+{
+background:#660000;
+
+
+}
+.main_table
+{
+font-weight:bold;
+font-size:1.5em;
+color:white;
+width:100%;
+background:	 #1f1f2e;
+text-align:center;
+border-radius:7px;
+border:2px solid grey;
+}
+.main_table tr td
+{
+padding:1px;
+background:#330000;
+border-radius:5px;
+border:1px solid black;
+}
+.main_table tr td input
+{
+color:black;
+text-align:center;
+font-weight:bold;
+font-size:1.2em;
+height:35px;
+width:80px;
+border-radius:20px;
+}
+.spo
+{
+font-weight:bold;
+font-size:0.3em;
+color:white;
+background:#660000;
+text-align:center;
+border-radius:7px;
+border:2px solid grey;
+width:100%;
+}
+.spo tr td
+{
+font-weight:bold;
+color:white;
+background:#330000;
+border-radius:5px;
+border:1px solid black;
+}
+.indicator
+{
+	position:absolute;width:12px;height:12px;border-radius:25px;
+	margin-top:10px;
+	margin-left:125px;
+ 
+	animation-name:indi_dec;
+	animation-duration:1s;
+	animation-iteration-count:infinite;
+	-webkit-animation-name:indi_dec;
+	-webkit-animation-duration:1s;
+	-webkit-animation-iteration-count:infinite;
+}
+
+@-webkit-keyframes indi_dec
+{
+	0%{background-color:#66ff33;}
+	100%{background-color:blue;}
+
+}
+@keyframes indi_dec
+{
+	0%{background-color:#66ff33;}
+	100%{background-color:blue;}
+}
+
+.pointer
+{
+position:absolute;
+left:46%;
+text-align:center;
+font-weight:bold;
+
+animation-name:pointer_dec;
+	animation-duration:0.5s;
+	animation-iteration-count:infinite;
+	-webkit-animation-name:pointer_dec;
+	-webkit-animation-duration:0.5s;
+	-webkit-animation-iteration-count:infinite;
+
+}
+
+@-webkit-keyframes pointer_dec
+{
+	0%{color:white;}
+	100%{color:black;}
+
+}
+@keyframes pointer_dec
+{
+	0%{color:white;}
+	100%{color:black;}
+}
+#keyboard_wkt
+{
+border:2px solid grey;background:#0a1010;font-size:1.3em;padding-top:15px;padding-top:5px;padding-bottom:5px;
+}
+#keyboard_wkt:hover
+{
+background:red;
+}
+.prev
+{
+font-size:14px;
+padding:0px;
+margin:0px;
+letter-spacing:-1px;
+font-weight:normal
+}
+.wxsf_out
+{
+font-size:9px;
+font-weight:normal;
+}
+.wxsf_in
+{
+font-size:12px;
+}
+</style>
+
+
+
+
+</head>
+<body style="background:#DCDCDC;">
+
+
+
+<div style="background:#330080;color:white;padding:3px;font-size:1.4em;border-radius:10px;font-weight:bold" align="center">
+Score Counter
+</div>
+<hr>
+<!-- score per over -->
+<center>
+<div style="width:50%;background:#33001a;color:white;text-align:center;border-radius:15px">score/over
+</div></center>
+<table class="spo">
+<tr>
+<td><div id="spo_1">-</div>
+</td>
+<td><div id="spo_2">-</div>
+</td>
+<td><div id="spo_3">-</div>
+</td>
+<td><div id="spo_4">-</div>
+</td>
+<td><div id="spo_5">-</div>
+</td>
+<td><div id="spo_6">-</div>
+</td>
+<td><div id="spo_7">-</div>
+</td>
+<td><div id="spo_8">-</div>
+</td>
+<td><div id="spo_9">-</div>
+</td>
+<td><div id="spo_10">-</div>
+</td>
+<td><div id="spo_11" style="background:black;font-size:12px">-</div>
+</td>
+</tr>
+</table>
+<hr>
+<!--upper boxes-->
+<div class="container-b1-b2">
+<div class="box1">
+<div class="box-heading">
+Score
+</div>
+<div id="total_score">
+0
+</div>
+</div>
+<div class="box2">
+<div class="box-heading">
+Overs
+</div>
+<div style="font-size:50px;padding:0px">
+<span id="ov">
+0
+</span>
+.<span id="ov_bol" style="font-size:0.7em">&nbsp;0</span>
+</div>
+</div>
+</div>
+
+
+<hr>
+
+<!-- wide or no bowl-->
+
+<div class="extra_box">
+
+<input id="extra" name="extra" placeholder="W/N" type="number" onblur="add_extra(this.value)" onfocus="hide_keyboard()">
+</div>
+
+
+<!-- starting main block -->
+<table class="main_table">
+<tr>
+</tr>
+<tr>
+</tr>
+<!--bowl 1-->
+<tr><td><div class="wxsf_out">Wkts</div>
+<div style="background:white;width:100%;height:1px;"></div>
+<div class="wxsf_in" id="total_wicket_display">0</div>
+</td>
+<td>
+<div>1.
+</div>
+</td>
+<td>
+<div id="idicators">
+<div class="indicator" id="indi_both1">
+</div>
+<center><div class="pointer" id="indi_both2">&nbsp;|
+</div></center>
+</div>
+<input type="text" id="inp1" name="bowl1" onblur="bo1(this.value)" readonly>
+</td>
+<td>
+<div class="prev" id="prev_1">
+&nbsp&nbsp-&nbsp;&nbsp
+</div>
+</td>
+<td><div style="font-size:0.6em;letter-spacing:-1px;"><span id="wkt_show">0</span> wkt</div></td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<!--bowl 2-->
+<tr><td><div class="wxsf_out">Extra</div><div style="background:white;width:100%;height:1px;"></div>
+<div class="wxsf_in"><span id="extra_viewer">
+0
+</span></div></td>
+<td >2.
+</td>
+<td><div class="indicator" id="indi_both3">
+</div>
+<center><div class="pointer" id="indi_both4">&nbsp;|
+</div></center>
+<input type="text" id="inp2" name="bowl2"  onblur="bo2(this.value)" readonly>
+</td>
+<td>
+<div class="prev" id="prev_2">
+-
+</div>
+</td>
+<td><div id="prev_raw" style="font-size:0.8em">00</div></td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+
+<!--bowl 3-->
+<tr>
+<td><div class="wxsf_out">4's</div>
+<div style="background:white;width:100%;height:1px;"></div>
+<div class="wxsf_in" id="total_four_display">0</div></td>
+<td >3.
+</td>
+<td><div class="indicator" id="indi_both5">
+</div>
+<center><div class="pointer" id="indi_both6">&nbsp;|
+</div></center>
+<input type="text" id="inp3" name="bowl3"  onblur="bo3(this.value)" readonly>
+</td>
+<td>
+<div class="prev" id="prev_3">
+-
+</div>
+</td>
+<td>+</td>
+</tr>
+
+<tr>
+</tr>
+<tr>
+</tr>
+<!--bowl 4-->
+<tr><td><div class="wxsf_out">6's</div>
+<div style="background:white;width:100%;height:1px;"></div>
+<div class="wxsf_in" id="total_six_display">0</div></td>
+<td >4.
+</td>
+<td><div class="indicator" id="indi_both7">
+</div>
+<center><div class="pointer" id="indi_both8">&nbsp;|
+</div></center>
+<input type="text" id="inp4" name="bowl4"  onblur="bo4(this.value)" readonly>
+</td>
+<td>
+<div class="prev" id="prev_4">
+-
+</div>
+</td>
+<td><div id="prev_extra" style="font-size:0.8em">00</div></td>
+</tr>
+
+<tr>
+</tr>
+<tr>
+</tr>
+<!--bowl 5-->
+<tr><td>&nbsp;&nbsp;&nbsp;</td>
+<td >5.
+</td>
+<td><div class="indicator" id="indi_both9">
+</div>
+<center><div class="pointer" id="indi_both10">&nbsp;|
+</div></center>
+<input type="text" id="inp5" name="bowl5"  onblur="bo5(this.value)" readonly>
+</td>
+<td>
+<div class="prev" id="prev_5">
+-
+</div>
+</td>
+<td>=</td>
+</tr>
+
+<tr>
+</tr>
+<tr>
+</tr>
+<!--bowl 6-->
+<tr><td>&nbsp;&nbsp;&nbsp;</td>
+<td >6.
+</td>
+<td><div class="indicator" id="indi_both11">
+</div>
+<center><div class="pointer" id="indi_both12">&nbsp;|
+</div></center>
+<input type="text" id="inp6" name="bowl6"  onblur="bo6(this.value)" readonly>
+</td>
+<td>
+<div class="prev" id="prev_6">
+-
+</div>
+</td>
+<td><div id="prev_total" style="font-size:0.8em">00</div></td>
+</tr>
+
+</table>
+
+<hr>
+
+<!-- keyboard starts from here-->
+<table id="keyboard" class="keyboard">
+<tr>
+<td><div onclick="v_val(1)">&nbsp;&nbsp;1&nbsp;&nbsp;
+</div>
+</td>
+<td><div onclick="v_val(2)">2
+</div>
+</td>
+<td><div onclick="v_val(3)">3
+</div>
+</td>
+</tr>
+<tr>
+<td><div onclick="v_val(4)">4
+</div>
+</td>
+<td>
+<div onclick="v_val(5)">&nbsp;&nbsp;5&nbsp;&nbsp;
+</div>
+</td>
+<td><div onclick="v_val(6)">6
+</div>
+</td>
+</tr>
+<tr>
+<td><div id="keyboard_wkt" onclick="v_val(11)">Wkt</div>
+</td>
+<td><div onclick="v_val(0)">0
+</div>
+</td>
+<td><div onclick="set_score()">GO
+</div>
+</td>
+</tr>
+</table>
+
+
+
+<script language="javascript">
+
+
+
+var final_score=0;
+var overs_counter=0;
+var extra_counter=0;
+var prev_raw=0;
+var prev_extra=0;
+var prev_total=0;
+var spo_counter=1;
+var total_wicket_counter=0;
+var prev_wicket_counter=0;
+var total_four_counter=0;
+var total_six_counter=0;
+document.getElementById("inp1").disabled=false;
+//document.getElementById("inp1").focus();
+document.getElementById("inp2").disabled=true;
+document.getElementById("inp3").disabled=true;
+document.getElementById("inp4").disabled=true;
+document.getElementById("inp5").disabled=true;
+document.getElementById("inp6").disabled=true;
+document.getElementById("indi_both1").style.visibility="visible";
+document.getElementById("indi_both2").style.visibility="visible";
+document.getElementById("indi_both3").style.visibility="hidden";
+document.getElementById("indi_both4").style.visibility="hidden";
+document.getElementById("indi_both5").style.visibility="hidden";
+document.getElementById("indi_both6").style.visibility="hidden";
+document.getElementById("indi_both7").style.visibility="hidden";
+document.getElementById("indi_both8").style.visibility="hidden";
+document.getElementById("indi_both9").style.visibility="hidden";
+document.getElementById("indi_both10").style.visibility="hidden";
+document.getElementById("indi_both11").style.visibility="hidden";
+document.getElementById("indi_both12").style.visibility="hidden";
+
+
+
+
+function v_val(val)
+{
+document.getElementById("indi_both2").style.visibility="hidden";
+document.getElementById("indi_both4").style.visibility="hidden";
+document.getElementById("indi_both6").style.visibility="hidden";
+document.getElementById("indi_both8").style.visibility="hidden";
+document.getElementById("indi_both10").style.visibility="hidden";
+document.getElementById("indi_both12").style.visibility="hidden";
+
+
+if(document.getElementById("inp1").disabled==false)
+{
+if(val==11)
+{
+document.getElementById("inp1").value='wkt';
+}
+else
+document.getElementById("inp1").value=val;
+}
+if(document.getElementById("inp2").disabled==false)
+{
+if(val==11)
+{
+document.getElementById("inp2").value='wkt';
+}
+else
+{
+document.getElementById("inp2").value=val;
+}
+}
+if(document.getElementById("inp3").disabled==false)
+{
+if(val==11)
+{
+document.getElementById("inp3").value='wkt';
+}
+else
+{
+document.getElementById("inp3").value=val;
+}
+}
+if(document.getElementById("inp4").disabled==false)
+{
+if(val==11)
+{
+document.getElementById("inp4").value='wkt';
+}
+else
+{
+document.getElementById("inp4").value=val;
+}
+}
+if(document.getElementById("inp5").disabled==false)
+{
+if(val==11)
+{
+document.getElementById("inp5").value='wkt';
+}
+else
+{
+document.getElementById("inp5").value=val;
+}
+}
+if(document.getElementById("inp6").disabled==false)
+{
+if(val==11)
+{
+document.getElementById("inp6").value='wkt';
+}
+else
+{
+document.getElementById("inp6").value=val;
+}
+}
+}
+
+
+function add_extra(xtr)
+{
+
+
+if(document.getElementById("inp1").disabled==false)
+{
+document.getElementById("indi_both2").style.visibility="visible";
+}
+if(document.getElementById("inp2").disabled==false)
+{
+
+document.getElementById("indi_both4").style.visibility="visible";
+}
+if(document.getElementById("inp3").disabled==false)
+{
+
+document.getElementById("indi_both6").style.visibility="visible";
+}
+if(document.getElementById("inp4").disabled==false)
+{
+
+document.getElementById("indi_both8").style.visibility="visible";
+}
+if(document.getElementById("inp5").disabled==false)
+{
+
+document.getElementById("indi_both10").style.visibility="visible";
+}
+if(document.getElementById("inp6").disabled==false)
+{
+
+document.getElementById("indi_both12").style.visibility="visible";
+}
+
+
+v=parseInt(xtr);
+if(v<=7&&v>=0)
+{
+prev_extra=prev_extra+v;
+prev_total=prev_total+v;
+final_score=final_score+v;
+extra_counter=extra_counter+v;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("extra_viewer").innerHTML=extra_counter;
+document.getElementById("extra").value="";
+}
+if(v<0||v>7)
+{
+alert("Galat Score na bhar oye!");
+document.getElementById("extra").value="";
+}
+document.getElementById("keyboard").style.visibility = "visible";
+}
+
+//
+//score set function starts from here
+//
+
+function set_score()
+{
+
+//first bowl starts
+
+if(document.getElementById("inp1").disabled==false)
+{
+if(parseInt(document.getElementById("inp1").value)>=0&&parseInt(document.getElementById("inp1").value)<=6)
+{
+got_val=parseInt(document.getElementById("inp1").value);
+prev_raw=prev_raw+got_val;
+prev_total=prev_total+got_val;
+final_score=final_score+got_val;
+if(got_val==4)
+{
+total_four_counter++;
+document.getElementById("total_four_display").innerHTML=total_four_counter;
+}
+if(got_val==6)
+{
+total_six_counter++;
+document.getElementById("total_six_display").innerHTML=total_six_counter;
+}
+
+document.getElementById("ov_bol").innerHTML="1";
+document.getElementById("inp1").disabled=true;
+document.getElementById("inp2").disabled=false;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("indi_both1").style.visibility="hidden";
+document.getElementById("indi_both2").style.visibility="hidden";
+document.getElementById("indi_both3").style.visibility="visible";
+document.getElementById("indi_both4").style.visibility="visible";
+}
+else if((document.getElementById("inp1").value)=='wkt')
+{
+document.getElementById("ov_bol").innerHTML="1";
+prev_wicket_counter=prev_wicket_counter+1;
+total_wicket_counter++;
+//alert(total_wicket_counter);
+document.getElementById("total_wicket_display").innerHTML=total_wicket_counter;
+document.getElementById("inp1").disabled=true;
+document.getElementById("inp2").disabled=false;
+document.getElementById("indi_both1").style.visibility="hidden";
+document.getElementById("indi_both2").style.visibility="hidden";
+document.getElementById("indi_both3").style.visibility="visible";
+document.getElementById("indi_both4").style.visibility="visible";
+}
+else
+alert("Please fill the scores of this ball");
+}
+else if(document.getElementById("inp2").disabled==false)
+{
+if(parseInt(document.getElementById("inp2").value)>=0)
+{
+got_val=parseInt(document.getElementById("inp2").value);
+final_score=final_score+got_val;
+//alert(final_score);
+prev_raw=prev_raw+got_val;
+prev_total=prev_total+got_val;
+if(got_val==4)
+{
+total_four_counter++;
+document.getElementById("total_four_display").innerHTML=total_four_counter;
+}
+if(got_val==6)
+{
+total_six_counter++;
+document.getElementById("total_six_display").innerHTML=total_six_counter;
+}
+document.getElementById("ov_bol").innerHTML="2";
+document.getElementById("inp2").disabled=true;
+document.getElementById("inp3").disabled=false;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("indi_both3").style.visibility="hidden";
+document.getElementById("indi_both4").style.visibility="hidden";
+document.getElementById("indi_both5").style.visibility="visible";
+document.getElementById("indi_both6").style.visibility="visible";
+}
+else if((document.getElementById("inp2").value)=='wkt')
+{
+prev_wicket_counter=prev_wicket_counter+1;
+total_wicket_counter++;
+document.getElementById("total_wicket_display").innerHTML=total_wicket_counter;
+document.getElementById("ov_bol").innerHTML="2";
+document.getElementById("inp2").disabled=true;
+document.getElementById("inp3").disabled=false;
+document.getElementById("indi_both3").style.visibility="hidden";
+document.getElementById("indi_both4").style.visibility="hidden";
+document.getElementById("indi_both5").style.visibility="visible";
+document.getElementById("indi_both6").style.visibility="visible";
+}
+else
+alert("Salya score ta bhar de");
+}
+else if(document.getElementById("inp3").disabled==false)
+{
+if(parseInt(document.getElementById("inp3").value)>=0)
+{
+got_val=parseInt(document.getElementById("inp3").value);
+final_score=final_score+got_val;
+//alert(final_score);
+prev_raw=prev_raw+got_val;
+prev_total=prev_total+got_val;
+if(got_val==4)
+{
+total_four_counter++;
+document.getElementById("total_four_display").innerHTML=total_four_counter;
+}
+if(got_val==6)
+{
+total_six_counter++;
+document.getElementById("total_six_display").innerHTML=total_six_counter;
+}
+document.getElementById("ov_bol").innerHTML="3";
+document.getElementById("inp3").disabled=true;
+document.getElementById("inp4").disabled=false;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("indi_both5").style.visibility="hidden";
+document.getElementById("indi_both6").style.visibility="hidden";
+document.getElementById("indi_both7").style.visibility="visible";
+document.getElementById("indi_both8").style.visibility="visible";
+}
+else if((document.getElementById("inp3").value)=='wkt')
+{
+prev_wicket_counter=prev_wicket_counter+1;
+total_wicket_counter++;
+document.getElementById("total_wicket_display").innerHTML=total_wicket_counter;
+document.getElementById("ov_bol").innerHTML="3";
+document.getElementById("inp3").disabled=true;
+document.getElementById("inp4").disabled=false;
+document.getElementById("indi_both5").style.visibility="hidden";
+document.getElementById("indi_both6").style.visibility="hidden";
+document.getElementById("indi_both7").style.visibility="visible";
+document.getElementById("indi_both8").style.visibility="visible";
+}
+else
+alert("Salya score ta bhar de");
+}
+else if(document.getElementById("inp4").disabled==false)
+{
+if(parseInt(document.getElementById("inp4").value)>=0)
+{
+got_val=parseInt(document.getElementById("inp4").value);
+final_score=final_score+got_val;
+//alert(final_score);
+prev_raw=prev_raw+got_val;
+prev_total=prev_total+got_val;
+if(got_val==4)
+{
+total_four_counter++;
+document.getElementById("total_four_display").innerHTML=total_four_counter;
+}
+if(got_val==6)
+{
+total_six_counter++;
+document.getElementById("total_six_display").innerHTML=total_six_counter;
+}
+document.getElementById("ov_bol").innerHTML="4";
+document.getElementById("inp4").disabled=true;
+document.getElementById("inp5").disabled=false;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("indi_both7").style.visibility="hidden";
+document.getElementById("indi_both8").style.visibility="hidden";
+document.getElementById("indi_both9").style.visibility="visible";
+document.getElementById("indi_both10").style.visibility="visible";
+}
+else if((document.getElementById("inp4").value)=='wkt')
+{
+prev_wicket_counter=prev_wicket_counter+1;
+total_wicket_counter++;
+document.getElementById("total_wicket_display").innerHTML=total_wicket_counter;
+document.getElementById("ov_bol").innerHTML="4";
+document.getElementById("inp4").disabled=true;
+document.getElementById("inp5").disabled=false;
+document.getElementById("indi_both7").style.visibility="hidden";
+document.getElementById("indi_both8").style.visibility="hidden";
+document.getElementById("indi_both9").style.visibility="visible";
+document.getElementById("indi_both10").style.visibility="visible";
+}
+else
+alert("Salya score ta bhar de");
+}
+else if(document.getElementById("inp5").disabled==false)
+{
+if(parseInt(document.getElementById("inp5").value)>=0)
+{
+got_val=parseInt(document.getElementById("inp5").value);
+final_score=final_score+got_val;
+//alert(final_score);
+prev_raw=prev_raw+got_val;
+prev_total=prev_total+got_val;
+if(got_val==4)
+{
+total_four_counter++;
+document.getElementById("total_four_display").innerHTML=total_four_counter;
+}
+if(got_val==6)
+{
+total_six_counter++;
+document.getElementById("total_six_display").innerHTML=total_six_counter;
+}
+document.getElementById("ov_bol").innerHTML="5";
+document.getElementById("inp5").disabled=true;
+document.getElementById("inp6").disabled=false;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("indi_both9").style.visibility="hidden";
+document.getElementById("indi_both10").style.visibility="hidden";
+document.getElementById("indi_both11").style.visibility="visible";
+document.getElementById("indi_both12").style.visibility="visible";
+
+}
+else if((document.getElementById("inp5").value)=='wkt')
+{
+prev_wicket_counter=prev_wicket_counter+1;
+total_wicket_counter++;
+document.getElementById("total_wicket_display").innerHTML=total_wicket_counter;
+document.getElementById("ov_bol").innerHTML="5";
+document.getElementById("inp5").disabled=true;
+document.getElementById("inp6").disabled=false;
+document.getElementById("indi_both9").style.visibility="hidden";
+document.getElementById("indi_both10").style.visibility="hidden";
+document.getElementById("indi_both11").style.visibility="visible";
+document.getElementById("indi_both12").style.visibility="visible";
+}
+
+else
+alert("Salya score ta bhar de");
+}
+
+
+
+
+
+
+
+//last bowl starts from here
+else if(document.getElementById("inp6").disabled==false)
+{
+if((document.getElementById("inp6").value)=='wkt')
+{
+prev_wicket_counter=prev_wicket_counter+1;
+total_wicket_counter++;
+overs_counter++;
+document.getElementById("wkt_show").innerHTML=prev_wicket_counter;
+prev_wicket_counter=0;
+document.getElementById("total_wicket_display").innerHTML=total_wicket_counter;
+document.getElementById("prev_raw").innerHTML=prev_raw;
+document.getElementById("prev_extra").innerHTML=prev_extra;
+document.getElementById("prev_total").innerHTML=prev_total;
+
+
+//spo showing values
+
+if(spo_counter==10)
+{
+document.getElementById("spo_10").innerHTML=prev_total;
+spo_counter=99;
+}
+if(spo_counter==9)
+{
+document.getElementById("spo_9").innerHTML=prev_total;
+spo_counter=10;
+}
+if(spo_counter==8)
+{
+document.getElementById("spo_8").innerHTML=prev_total;
+spo_counter=9;
+}
+if(spo_counter==7)
+{
+document.getElementById("spo_7").innerHTML=prev_total;
+spo_counter=8;
+}
+if(spo_counter==6)
+{
+document.getElementById("spo_6").innerHTML=prev_total;
+spo_counter=7;
+}if(spo_counter==5)
+{
+document.getElementById("spo_5").innerHTML=prev_total;
+spo_counter=6;
+}if(spo_counter==4)
+{
+document.getElementById("spo_4").innerHTML=prev_total;
+spo_counter=5;
+}
+if(spo_counter==3)
+{
+document.getElementById("spo_3").innerHTML=prev_total;
+spo_counter=4;
+}
+if(spo_counter==2)
+{
+document.getElementById("spo_2").innerHTML=prev_total;
+spo_counter=3;
+}
+if(spo_counter==1)
+{
+document.getElementById("spo_1").innerHTML=prev_total;
+spo_counter=2;
+}
+
+prev_extra=prev_raw=prev_total=0;
+document.getElementById("ov").innerHTML=overs_counter;
+document.getElementById("ov_bol").innerHTML="0";
+document.getElementById("inp1").disabled=false;
+document.getElementById("inp2").disabled=true;
+document.getElementById("inp3").disabled=true;
+document.getElementById("inp4").disabled=true;
+document.getElementById("inp5").disabled=true;
+document.getElementById("inp6").disabled=true;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("prev_1").innerHTML=document.getElementById("inp1").value;
+document.getElementById("prev_2").innerHTML=document.getElementById("inp2").value;
+document.getElementById("prev_3").innerHTML=document.getElementById("inp3").value;
+document.getElementById("prev_4").innerHTML=document.getElementById("inp4").value;
+document.getElementById("prev_5").innerHTML=document.getElementById("inp5").value;
+document.getElementById("prev_6").innerHTML=document.getElementById("inp6").value;
+document.getElementById("inp1").value="";
+document.getElementById("inp2").value="";
+document.getElementById("inp3").value="";
+document.getElementById("inp4").value="";
+document.getElementById("inp5").value="";
+document.getElementById("inp6").value="";
+document.getElementById("indi_both1").style.visibility="visible";
+document.getElementById("indi_both2").style.visibility="visible";
+document.getElementById("indi_both11").style.visibility="hidden";
+document.getElementById("indi_both12").style.visibility="hidden";
+
+if(spo_counter==99)
+{
+document.getElementById("spo_11").innerHTML=final_score;
+document.getElementById("inp1").disabled=true;
+//document.getElementById("inp1").focus();
+document.getElementById("inp2").disabled=true;
+document.getElementById("inp3").disabled=true;
+document.getElementById("inp4").disabled=true;
+document.getElementById("inp5").disabled=true;
+document.getElementById("inp6").disabled=true;
+document.getElementById("extra").disabled=true;
+document.getElementById("indi_both1").style.visibility="hidden";
+document.getElementById("indi_both2").style.visibility="hidden";
+document.getElementById("indi_both3").style.visibility="hidden";
+document.getElementById("indi_both4").style.visibility="hidden";
+document.getElementById("indi_both5").style.visibility="hidden";
+document.getElementById("indi_both6").style.visibility="hidden";
+document.getElementById("indi_both7").style.visibility="hidden";
+document.getElementById("indi_both8").style.visibility="hidden";
+document.getElementById("indi_both9").style.visibility="hidden";
+document.getElementById("indi_both10").style.visibility="hidden";
+document.getElementById("indi_both11").style.visibility="hidden";
+document.getElementById("indi_both12").style.visibility="hidden";
+}
+}
+
+
+else if(parseInt(document.getElementById("inp6").value)>=0)
+{
+got_val=parseInt(document.getElementById("inp6").value);
+final_score=final_score+got_val;
+overs_counter++;
+//alert(final_score);
+prev_raw=prev_raw+got_val;
+prev_total=prev_total+got_val;
+if(got_val==4)
+{
+total_four_counter++;
+document.getElementById("total_four_display").innerHTML=total_four_counter;
+}
+if(got_val==6)
+{
+total_six_counter++;
+document.getElementById("total_six_display").innerHTML=total_six_counter;
+}
+document.getElementById("wkt_show").innerHTML=prev_wicket_counter;
+document.getElementById("prev_raw").innerHTML=prev_raw;
+document.getElementById("prev_extra").innerHTML=prev_extra;
+document.getElementById("prev_total").innerHTML=prev_total;
+
+//spo showing values
+
+if(spo_counter==10)
+{
+document.getElementById("spo_10").innerHTML=prev_total;
+spo_counter=99;
+}
+if(spo_counter==9)
+{
+document.getElementById("spo_9").innerHTML=prev_total;
+spo_counter=10;
+}
+if(spo_counter==8)
+{
+document.getElementById("spo_8").innerHTML=prev_total;
+spo_counter=9;
+}
+if(spo_counter==7)
+{
+document.getElementById("spo_7").innerHTML=prev_total;
+spo_counter=8;
+}
+if(spo_counter==6)
+{
+document.getElementById("spo_6").innerHTML=prev_total;
+spo_counter=7;
+}if(spo_counter==5)
+{
+document.getElementById("spo_5").innerHTML=prev_total;
+spo_counter=6;
+}if(spo_counter==4)
+{
+document.getElementById("spo_4").innerHTML=prev_total;
+spo_counter=5;
+}
+if(spo_counter==3)
+{
+document.getElementById("spo_3").innerHTML=prev_total;
+spo_counter=4;
+}
+if(spo_counter==2)
+{
+document.getElementById("spo_2").innerHTML=prev_total;
+spo_counter=3;
+}
+if(spo_counter==1)
+{
+document.getElementById("spo_1").innerHTML=prev_total;
+spo_counter=2;
+}
+
+prev_extra=prev_raw=prev_total=prev_wicket_counter=0;
+document.getElementById("ov").innerHTML=overs_counter;
+document.getElementById("ov_bol").innerHTML="0";
+document.getElementById("inp1").disabled=false;
+document.getElementById("inp2").disabled=true;
+document.getElementById("inp3").disabled=true;
+document.getElementById("inp4").disabled=true;
+document.getElementById("inp5").disabled=true;
+document.getElementById("inp6").disabled=true;
+document.getElementById("total_score").innerHTML=final_score;
+document.getElementById("prev_1").innerHTML=document.getElementById("inp1").value;
+document.getElementById("prev_2").innerHTML=document.getElementById("inp2").value;
+document.getElementById("prev_3").innerHTML=document.getElementById("inp3").value;
+document.getElementById("prev_4").innerHTML=document.getElementById("inp4").value;
+document.getElementById("prev_5").innerHTML=document.getElementById("inp5").value;
+document.getElementById("prev_6").innerHTML=document.getElementById("inp6").value;
+document.getElementById("inp1").value="";
+document.getElementById("inp2").value="";
+document.getElementById("inp3").value="";
+document.getElementById("inp4").value="";
+document.getElementById("inp5").value="";
+document.getElementById("inp6").value="";
+document.getElementById("indi_both1").style.visibility="visible";
+document.getElementById("indi_both2").style.visibility="visible";
+document.getElementById("indi_both11").style.visibility="hidden";
+document.getElementById("indi_both12").style.visibility="hidden";
+
+if(spo_counter==99)
+{
+document.getElementById("spo_11").innerHTML=final_score;
+document.getElementById("inp1").disabled=true;
+//document.getElementById("inp1").focus();
+document.getElementById("inp2").disabled=true;
+document.getElementById("inp3").disabled=true;
+document.getElementById("inp4").disabled=true;
+document.getElementById("inp5").disabled=true;
+document.getElementById("inp6").disabled=true;
+document.getElementById("extra").disabled=true;
+document.getElementById("indi_both1").style.visibility="hidden";
+document.getElementById("indi_both2").style.visibility="hidden";
+document.getElementById("indi_both3").style.visibility="hidden";
+document.getElementById("indi_both4").style.visibility="hidden";
+document.getElementById("indi_both5").style.visibility="hidden";
+document.getElementById("indi_both6").style.visibility="hidden";
+document.getElementById("indi_both7").style.visibility="hidden";
+document.getElementById("indi_both8").style.visibility="hidden";
+document.getElementById("indi_both9").style.visibility="hidden";
+document.getElementById("indi_both10").style.visibility="hidden";
+document.getElementById("indi_both11").style.visibility="hidden";
+document.getElementById("indi_both12").style.visibility="hidden";
+
+}
+}
+else
+alert("Salya score ta bhar de");
+}
+}
+
+function hide_keyboard()
+{
+if(document.getElementById("inp1").disabled==false)
+document.getElementById("inp1").value="";
+if(document.getElementById("inp2").disabled==false)
+document.getElementById("inp2").value="";
+if(document.getElementById("inp3").disabled==false)
+document.getElementById("inp3").value="";
+if(document.getElementById("inp4").disabled==false)
+document.getElementById("inp4").value="";
+if(document.getElementById("inp5").disabled==false)
+document.getElementById("inp5").value="";
+if(document.getElementById("inp6").disabled==false)
+document.getElementById("inp6").value="";
+document.getElementById("keyboard").style.visibility = "hidden"; 
+document.getElementById("indi_both2").style.visibility="hidden";
+document.getElementById("indi_both4").style.visibility="hidden";
+document.getElementById("indi_both6").style.visibility="hidden";
+document.getElementById("indi_both8").style.visibility="hidden";
+document.getElementById("indi_both10").style.visibility="hidden";
+document.getElementById("indi_both12").style.visibility="hidden";
+document.getElementById("indi_both1").style.visibility="hidden";
+document.getElementById("indi_both3").style.visibility="hidden";
+document.getElementById("indi_both5").style.visibility="hidden";
+document.getElementById("indi_both7").style.visibility="hidden";
+document.getElementById("indi_both9").style.visibility="hidden";
+document.getElementById("indi_both11").style.visibility="hidden";
+}
+
+
+
+
+
+
+</script>
+
+<div style="z-index:99999999;position:absolute;height:40px;width:250px;background:transparent;right:0px"></div>
+
+</body>
+</html>
